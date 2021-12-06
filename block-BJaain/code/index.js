@@ -1,40 +1,40 @@
-console.log(this.document === document); // Output
+console.log(this.document === document); // true
 
 // ------------
 
-console.log(this === window); //Output
+console.log(this === window); // true
 
 // ------------
 
 var myFunction = function () {
   console.log(this);
 };
-myFunction(); // Output
+myFunction(); // window
 
 // ------------
 
 function f1() {
-  'use strict';
+  "use strict";
   return this;
 }
-console.log(f1() === window); //Output
+console.log(f1() === window); // false
 
 // ------------
 
 function foo() {
-  console.log('Simple function call');
+  console.log("Simple function call");
   console.log(this === window);
 }
 
-foo(); //Output ??
+foo(); // `Simple function call` true
 
 // ------------
 
 // This for IIFE
 (function () {
-  console.log('Anonymous function invocation');
+  console.log("Anonymous function invocation");
   console.log(this === window);
-})(); //Output
+})(); // `Anonymous function invocation` true
 
 // ------------
 
@@ -42,7 +42,7 @@ var myObject = {};
 myObject.someMethod = function () {
   console.log(this);
 };
-myObject.someMethod(); //Value Of This
+myObject.someMethod(); // someMethod: function(){ console.log(this)}
 
 // ------------
 
@@ -55,16 +55,16 @@ function Person(fn, ln) {
   };
 }
 
-let person = new Person('John', 'Reed');
-person.displayName(); // Output
-let person2 = new Person('Paul', 'Adams');
-person2.displayName(); // Output
+let person = new Person("John", "Reed");
+person.displayName(); // Name: John Reed
+let person2 = new Person("Paul", "Adams");
+person2.displayName(); // Name: Paul Adams
 
 // ------------
 
 function foo() {
-  'use strict';
-  console.log('Simple function call');
+  "use strict";
+  console.log("Simple function call");
   console.log(this === window);
 }
 
@@ -76,10 +76,10 @@ let user = {
   },
 };
 
-user.foo(); // Output
+user.foo(); // Simple function call / false
 let fun1 = user.foo1;
-fun1(); // Output ??
-user.foo1(); // Output ??
+fun1(); // true
+user.foo1(); // false
 
 // ------------
 
@@ -91,13 +91,13 @@ var obj = {
   },
 };
 
-obj.getX(); // Output ??
+obj.getX(); // 81
 
 var retrieveX = obj.getX;
-retrieveX(); //Output ??
+retrieveX(); // 9
 
 var boundGetX = retrieveX.bind(obj);
-boundGetX(); // Output ??
+boundGetX(); // 81
 
 // ------------
 
@@ -110,17 +110,17 @@ function Person(fn, ln) {
   };
 }
 
-let person = new Person('John', 'Reed');
-person.displayName(); // Output
-let person2 = new Person('Paul', 'Adams');
-person2.displayName(); // Output
+let person = new Person("John", "Reed");
+person.displayName(); // Name: John Reed
+let person2 = new Person("Paul", "Adams");
+person2.displayName(); // Name: Paul Adams
 
-person.displayName.call(person2); // Output ??
+person.displayName.call(person2); // Name: Paul Adams
 
 // ------------
 
 const a = {
-  a: 'a',
+  a: "a",
 };
 const obj = {
   getThis: () => this,
@@ -128,20 +128,20 @@ const obj = {
     return this;
   },
 };
-obj.getThis3 = obj.getThis.bind(obj);
-obj.getThis4 = obj.getThis2.bind(obj);
+obj.getThis3 = obj.getThis.bind(obj); //() => this
+obj.getThis4 = obj.getThis2.bind(obj); // ƒ getThis2() { return this;}
 
 // Output
-obj.getThis();
+obj.getThis(); //window
 
 // Output
-obj.getThis.call(a);
+obj.getThis.call(a); //window
 
 // Output
-obj.getThis2();
+obj.getThis2(); // {getThis: ƒ, getThis2: ƒ, getThis3: ƒ, getThis4: ƒ}
 
 // Output
-obj.getThis2.call(a);
+obj.getThis2.call(a); //
 
 // Output
 obj.getThis3();
@@ -152,9 +152,9 @@ obj.getThis4();
 // -------------
 
 let person = {
-  name: 'Jay',
+  name: "Jay",
   greet: function () {
-    console.log('hello, ' + this.name);
+    console.log("hello, " + this.name);
   },
 };
 
@@ -165,11 +165,11 @@ greet(); // output
 
 // -------------
 
-let name = 'Jay Global';
+let name = "Jay Global";
 let person = {
-  name: 'Jay Person',
+  name: "Jay Person",
   details: {
-    name: 'Jay Details',
+    name: "Jay Details",
     print: function () {
       return this.name;
     },
@@ -193,7 +193,7 @@ let outerFn = function () {
   let n = 5;
   console.log(innerItem);
   let innerFn = function () {
-    let innerItem = 'inner';
+    let innerItem = "inner";
     console.log(n);
   };
   return innerFn;
@@ -207,7 +207,7 @@ let object = {
   data: [1, 2, 3],
   dataDouble: [1, 2, 3],
   double: function () {
-    console.log('this inside of outerFn double()');
+    console.log("this inside of outerFn double()");
     console.log(this);
     return this.data.map(function (item) {
       console.log(this); // Output ???
@@ -215,7 +215,7 @@ let object = {
     });
   },
   doubleArrow: function () {
-    console.log('this inside of outerFn doubleArrow()');
+    console.log("this inside of outerFn doubleArrow()");
     console.log(this);
     return this.dataDouble.map((item) => {
       console.log(this); // Output ???
@@ -230,7 +230,7 @@ object.doubleArrow();
 // --------------
 
 let bobObj = {
-  name: 'Bob',
+  name: "Bob",
 };
 
 function print() {
@@ -262,7 +262,7 @@ console.log(getSecondData()); // Output and why ???
 // --------------
 
 const call = {
-  caller: 'mom',
+  caller: "mom",
   says: function () {
     console.log(`Hey, ${this.caller} just called.`);
   },
@@ -273,7 +273,7 @@ call.says(); // output ???
 // -----------------
 
 const call = {
-  caller: 'mom',
+  caller: "mom",
   says: function () {
     console.log(`Hey, ${this.caller} just called.`);
   },
@@ -290,7 +290,7 @@ function anotherCaller() {
 }
 
 const call = {
-  caller: 'mom',
+  caller: "mom",
   anotherCaller: anotherCaller,
   says: function () {
     console.log(`Hey, ${this.caller} just called.`);
