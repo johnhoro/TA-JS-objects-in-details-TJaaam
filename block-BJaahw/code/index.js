@@ -97,7 +97,7 @@ let personOne = new createUser(`john`, 25);
 let personTwo = new createUser(`kushal`, 25);
 
 // 9. Check by creating two instance of the class using data of two different persons and re-assign the value of `personOne` and `personTwo`
-personOne.name = `suhana`;
+personOne.name = `suhana john`;
 personTwo.name = `Arya`;
 
 // 10. Try calling `personOne.sayHello()` and `personTwo.sayHello()`. Check if you get the required output.
