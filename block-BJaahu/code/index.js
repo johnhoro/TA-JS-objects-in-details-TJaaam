@@ -72,7 +72,7 @@ class CreateQuestion {
     return this.correctAnswerIndex === Index;
   }
   getCorrectAnswer() {
-    return this.correctAnswerIndex;
+    return this.options[this.correctAnswerIndex];
   }
 }
 
