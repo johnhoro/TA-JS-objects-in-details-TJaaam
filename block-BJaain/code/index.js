@@ -138,16 +138,16 @@ obj.getThis(); //window
 obj.getThis.call(a); //window
 
 // Output
-obj.getThis2(); // {getThis: ƒ, getThis2: ƒ, getThis3: ƒ, getThis4: ƒ}
+obj.getThis2(); // obj
 
 // Output
-obj.getThis2.call(a); //
+obj.getThis2.call(a); // a
 
 // Output
-obj.getThis3();
+obj.getThis3(); // window
 
 // Output
-obj.getThis4();
+obj.getThis4(); //obj
 
 // -------------
 
@@ -158,10 +158,10 @@ let person = {
   },
 };
 
-person.greet(); // output
+person.greet(); // Hello Jay
 
 let greet = person.greet;
-greet(); // output
+greet(); // Hello
 
 // -------------
 
@@ -178,14 +178,14 @@ let person = {
     return this.name;
   },
 };
-console.log(person.details.print()); // output?
-console.log(person.print()); // output?
+console.log(person.details.print()); // "Jay Details"
+console.log(person.print()); // "Jay Person"
 
 let name1 = person.print;
 let name2 = person.details;
 
-console.log(name1()); // output?
-console.log(name2.print()); // output?
+console.log(name1()); // ''
+console.log(name2.print()); // error
 
 // --------
 
@@ -208,9 +208,9 @@ let object = {
   dataDouble: [1, 2, 3],
   double: function () {
     console.log("this inside of outerFn double()");
-    console.log(this);
+    console.log(this); //obj
     return this.data.map(function (item) {
-      console.log(this); // Output ???
+      console.log(this); // window
       return item * 2;
     });
   },
@@ -218,14 +218,14 @@ let object = {
     console.log("this inside of outerFn doubleArrow()");
     console.log(this);
     return this.dataDouble.map((item) => {
-      console.log(this); // Output ???
+      console.log(this); // obj
       return item * 2;
     });
   },
 };
 
 object.double();
-object.doubleArrow();
+object.doubleArrow(); //obj
 
 // --------------
 
@@ -238,7 +238,7 @@ function print() {
 }
 
 let printNameBob = print.bind(bobObj);
-console.log(printNameBob()); // output??
+console.log(printNameBob()); // "Bob"
 
 // -------------------
 
@@ -257,7 +257,7 @@ let obj2 = {
 };
 
 let getSecondData = obj2.printSecondData.bind(obj1);
-console.log(getSecondData()); // Output and why ???
+console.log(getSecondData()); // 2
 
 // --------------
 
@@ -268,7 +268,8 @@ const call = {
   },
 };
 
-call.says(); // output ???
+call.says();
+("Hey mom just called");
 
 // -----------------
 
