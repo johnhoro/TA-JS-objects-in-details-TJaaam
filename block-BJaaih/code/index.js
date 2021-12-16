@@ -16,7 +16,7 @@ Array.prototype.myMap = function (cb) {
 // Test the myMap function you created above
 
 let numbers = [1, 5, 6, 8, 9];
-let words = "quick brown fox jumped over a lazy dog".split(" ");
+let words = "A quick brown fox jumped over a lazy dog".split(" ");
 
 let doubleNum = numbers.myMap(function (num) {
   return num * 2 - 1;
