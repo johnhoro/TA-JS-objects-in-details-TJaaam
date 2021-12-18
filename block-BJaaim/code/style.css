@@ -127,3 +127,61 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+/* CUSTUM STYLE */
+
+.container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 3rem auto;
+  padding: 0 1rem;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  background-color: chocolate;
+  padding: 2rem;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  color: white;
+}
+h1 {
+  font-size: 2rem;
+}
+p {
+  font-size: 1.3rem;
+}
+
+.quiz {
+  border: 2px solid chocolate;
+  padding: 2rem;
+}
+.options {
+  margin: 2rem 0;
+}
+
+.submit {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+.prev,
+.next {
+  padding: 0.5rem 1rem;
+  background-color: chocolate;
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+.show-result {
+  visibility: hidden;
+  background-color: chocolate;
+  color: white;
+}
