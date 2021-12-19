@@ -8,30 +8,41 @@
     <title>bookly app</title>
   </head>
   <body>
-    <header class="header">
-      <h1>My Booklist</h1>
-    </header>
-    <main class="main">
-      <form id="form">
-        <fieldset>
-          <label for="title">Title</label>
-          <input type="text" id="title" name="title" placeholder="title" />
-          <label for="author">Author</label>
-          <input type="text" id="author" name="author" placeholder="author" />
-          <label for="title">ISBN#</label>
-          <input id="isbn" type="number" name="isbn" placeholder="ISBN" />
-          <input class="btn" type="submit" value="Add Book" />
-        </fieldset>
-      </form>
-      <table>
-        <tr>
-          <th>Title</th>
-          <th>Author</th>
-          <th>ISBN#</th>
-        </tr>
-      </table>
-      <ul class="display"></ul>
-    </main>
+    <div class="modal">
+      <div class="container">
+        <h1>Add new Book!</h1>
+        <p>
+          You can add multiple books to your reading list, you can delete them
+          and mark as read
+        </p>
+        <form action="" class="form">
+          <input type="text" name="bookName" placeholder="Name of the book!" />
+          <input
+            type="text "
+            name="bookAuthor"
+            class="form-input"
+            placeholder="Author of the book!"
+          />
+          <input
+            type="text"
+            name="bookImage"
+            class="form-input"
+            placeholder="Book poster image URL"
+          />
+          <button class="form-btn" type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+    <div class="books container">
+      <ul class="book-list">
+        <!-- <li>
+          <img src="../assets/book.jpg" alt="Sapiens" />
+          <h1>Sapiens</h1>
+          <p>Agatha Christie</p>
+          <button class="form-btn">Mark as read!</button>
+        </li> -->
+      </ul>
+    </div>
     <script src="./index.js"></script>
   </body>
 </html>

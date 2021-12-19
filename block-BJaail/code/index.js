@@ -1,72 +1,68 @@
-class BookList {
-  constructor(root, list = []) {
-    this.books = list;
-    this.root = root;
+let form = document.querySelector(`form`);
+let bookListRoot = document.querySelector(`.book-list`);
+
+const nameElm = form.elements.bookName;
+const authorElm = form.elements.bookAuthor;
+const imageElm = form.elements.bookImage;
+
+class Book {
+  constructor(name, author, img) {
+    this.name = name;
+    this.author = author;
+    this.img = img;
+    this.isRead = false;
   }
-  add(title, author, isbn) {
-    let book = new BookList(title, author, isbn);
+
+  toggleIsRead() {
+    this.isRead = !this.isRead;
+  }
+}
+
+class BookList {
+  constructor(books = []) {
+    this.books = books;
+  }
+  addBook(name, author, img) {
+    let book = new Book(name, author, img);
     this.books.push(book);
     this.createUI();
-    return this.books.length;
   }
-  handleDelete(id) {
-    let index = this.books.findIndex((book) => book.id === id);
-    this.books.splice(index, 1);
-    this.createUI();
-    return this.books.length;
-  }
+
   createUI() {
-    this.root.innerHTML = "";
+    bookListRoot.innerHTML = "";
     this.books.forEach((book) => {
-      let ui = book.createUI();
-      ui.querySelector("span").addEventListener(
-        "click",
-        this.handleDelete.bind(this, book.id)
-      );
-      this.root.append(ui);
+      let li = document.createElement(`li`);
+      let img = document.createElement(`img`);
+      img.src = book.img;
+      let h1 = document.createElement(`h1`);
+      h1.innerText = book.name;
+      let p = document.createElement(`p`);
+      p.innerText = book.author;
+      let button = document.createElement(`button`);
+      button.innerText = book.isRead ? `Completed` : `Mark as read`;
+      button.classList.add(`form-btn`);
+      button.addEventListener("click", () => {
+        book.toggleIsRead();
+        this.createUI();
+      });
+      li.append(img, h1, p, button);
+      bookListRoot.append(li);
     });
   }
 }
 
-class Book {
-  constructor(title, author, isbn) {
-    this.title = title;
-    this.author = author;
-    this.isbn = isbn;
-    this.id = `id-${Date.now()}`;
-  }
-  createUI() {
-    let li = document.createElement("tr");
+let library = new BookList();
 
-    let paraOne = document.createElement("td");
-    paraOne.innerText = this.title;
-
-    let paraTwo = document.createElement("id");
-    paraTwo.innerText = this.author;
-
-    let paraThree = document.createElement("td");
-    paraThree.innerText = this.isbn;
-
-    let span = document.createElement("span");
-    span.innerText = "❌";
-    li.append(paraOne, paraTwo, paraThree, span);
-    return li;
-  }
+function handleSubmit(event) {
+  event.preventDefault();
+  const name = nameElm.value;
+  const author = authorElm.value;
+  const img = imageElm.value;
+  console.log(name, author, img);
+  library.addBook(name, author, img);
+  nameElm.value = "";
+  authorElm.value = "";
+  imageElm.value = "";
 }
 
-let form = document.querySelector(`#form`);
-
-let myBookList = new BookList(document.querySelector(".display"));
-
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-  let title = document.querySelector("#title").value;
-  let author = document.querySelector("#author").value;
-  let isbn = document.querySelector("#isbn").value;
-
-  myBookList.add(title, author, isbn);
-
-  document.querySelector("#title").value = "";
-  document.querySelector("#author").value = "";
-  document.querySelector("#isbn").value = "";
-});
+form.addEventListener(`submit`, handleSubmit);
