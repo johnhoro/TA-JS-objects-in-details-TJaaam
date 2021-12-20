@@ -55,7 +55,7 @@ class Artist extends Person {
   }
 }
 
-let artist1 = new Artist(`Singing`, `Joy`, 25, `Male`);
+let artist1 = new Artist(`Singing`, `Suhana`, 25, `female`);
 let teacher1 = new Teacher(`AltCampus`, `Ankit`, 27, `Male`);
 let crickter1 = new Cricketer(`India`, `Cricket`, `Virat Kohli`);
 let player1 = new Player(`football`, `Cristiano Ronaldo`, 35, `male`);
