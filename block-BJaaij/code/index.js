@@ -35,7 +35,7 @@ class Booklist {
   }
 }
 
-let book1 = new Book(`The sun and her flowers`, `Poetry`, `Rupi Kaur`);
+let book1 = new Book(`The Sun and her Flowers`, `Poetry`, `Rupi Kaur`);
 let book2 = new Book(`The First World War`, `History`, `Michael Howard`);
 let book3 = new Book(`The Fiery Trial`, `Civil War`, `Eric Foner`);
 let book4 = new Book(`To The Ends of the Earth`, `British Empire`, `TM Devine`);
