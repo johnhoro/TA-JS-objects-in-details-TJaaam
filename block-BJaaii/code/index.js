@@ -79,7 +79,7 @@ console.log(atmQueue.peek()); // "Aman"
 console.log(atmQueue.peek(1)); // "John"
 atmQueue.dequeue();
 console.log(atmQueue.length); // 2
-console.log(atmQueue.peek()); // 'John'
+console.log(atmQueue.peek()); // "John"
 console.log(atmQueue.isEmpty()); // false
 atmQueue.dequeue();
 atmQueue.dequeue();
