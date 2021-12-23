@@ -83,6 +83,6 @@ let firstQuestion = new CreateQuestion(
 );
 let secondQuestion = new CreateQuestion(
   "Where is the capital of Jamaica",
-  ["Tashkent", "Amaan", "Kingston", "Nairobi"],
+  ["Tashkent", "Suhana", "Kingston", "Nairobi"],
   2
 );
